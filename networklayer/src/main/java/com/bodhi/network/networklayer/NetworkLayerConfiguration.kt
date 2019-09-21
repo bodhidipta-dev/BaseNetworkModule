@@ -13,7 +13,11 @@ class NetworkLayerConfiguration(val httpconfig: HTTPConfiguration) {
         connectTimeout(httpconfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MILLISECONDS)
         addNetworkInterceptor(NetworkInterceptor())
         authenticator(TokenAuthenticator())
-        addInterceptor(logging)
+        addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+            override fun log(message: String) {
+                Timber.tag("OkHttp").d(message)
+            }
+        }))
     }.build().also {
         httpconfig.buildOkHttpClient(it)
     }
@@ -54,12 +58,6 @@ class NetworkLayerConfiguration(val httpconfig: HTTPConfiguration) {
             return httpconfig.getNetworkBuilder().authenticator(response)
         }
     }
-
-    private var logging = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-        override fun log(message: String) {
-            Timber.tag("OkHttp").d(message)
-        }
-    })
 }
 
 data class NetworkBuilder(
