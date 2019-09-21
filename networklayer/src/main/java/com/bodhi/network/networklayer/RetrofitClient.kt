@@ -7,12 +7,15 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class RetrofitClient(
     private val baseurl: String,
+    private val networkBuilder: NetworkBuilder = NetworkBuilder(),
     val retrofitCreator: (retrofit: Retrofit) -> Unit
 ) : HTTPConfiguration {
     private lateinit var retrofit: Retrofit
+
     init {
         NetworkLayerConfiguration(this)
     }
+
     override fun buildOkHttpClient(okHttpClient: OkHttpClient) {
         retrofit = Retrofit.Builder()
             .apply {
@@ -25,5 +28,5 @@ class RetrofitClient(
             }
     }
 
-    override fun getNetworkBuilder(): NetworkBuilder = NetworkBuilder()
+    override fun getNetworkBuilder(): NetworkBuilder = networkBuilder
 }
