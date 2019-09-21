@@ -1,0 +1,2 @@
+include ':app', ':networklayer'
+rootProject.name='ExampleNetworkLibrary'
