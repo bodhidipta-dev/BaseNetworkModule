@@ -16,6 +16,7 @@ Just to get everything in one place, for simple implementation.
                         return@NetworkBuilder null // Failed to authenticate.
                     }
                     // replace with your Auth request or null in case of invalid session
+                    // for more info got https://square.github.io/okhttp/4.x/okhttp/okhttp3/-authenticator/
                     it.request.newBuilder()
                         .header("Authorization", "your stuff - refresh token maybe or credentials")
                         .build()
