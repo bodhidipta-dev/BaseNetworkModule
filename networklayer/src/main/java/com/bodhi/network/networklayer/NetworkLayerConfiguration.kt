@@ -7,19 +7,20 @@ import java.nio.charset.Charset
 import java.util.concurrent.TimeUnit
 
 
-class NetworkLayerConfiguration(val httpconfig: HTTPConfiguration) {
-    private var okHttpClient: OkHttpClient = OkHttpClient.Builder().apply {
-        retryOnConnectionFailure(httpconfig.getNetworkBuilder().retryPolicy)
-        connectTimeout(httpconfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MILLISECONDS)
-        addNetworkInterceptor(NetworkInterceptor())
-        authenticator(TokenAuthenticator())
-        addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-            override fun log(message: String) {
-                Timber.tag("OkHttp").d(message)
-            }
-        }))
-    }.build().also {
-        httpconfig.buildOkHttpClient(it)
+class NetworkLayerConfiguration(private val httpconfig: HTTPConfiguration) {
+    init {
+        val okhttpClient = OkHttpClient.Builder().apply {
+            retryOnConnectionFailure(httpconfig.getNetworkBuilder().retryPolicy)
+            connectTimeout(httpconfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MILLISECONDS)
+            addNetworkInterceptor(NetworkInterceptor())
+            authenticator(TokenAuthenticator())
+            addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                override fun log(message: String) {
+                    Timber.tag("OkHttp").d(message)
+                }
+            }))
+        }.build()
+        httpconfig.buildOkHttpClient(okhttpClient)
     }
 
     private inner class NetworkInterceptor : Interceptor {

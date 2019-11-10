@@ -1,3 +1,7 @@
+ext {
+    retrofit = '2.6.2'
+    http_logging = '4.2.2'
+}
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
@@ -27,14 +31,14 @@ android {
 
 dependencies {
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation("com.squareup.okhttp3:okhttp:4.2.0")
+    implementation("com.squareup.okhttp3:okhttp:${http_logging}")
     debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
     releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
     api 'com.jakewharton.timber:timber:4.7.1'
-    implementation("com.squareup.okhttp3:logging-interceptor:4.2.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.6.1")
-    api("com.squareup.retrofit2:retrofit:2.6.1")
+    implementation("com.squareup.okhttp3:logging-interceptor:${http_logging}")
+    implementation("com.squareup.retrofit2:converter-gson:${retrofit}")
+    api("com.squareup.retrofit2:retrofit:${retrofit}")
     api 'io.reactivex.rxjava2:rxjava:2.2.12'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'com.squareup.retrofit2:adapter-rxjava:2.6.1'
+    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
 }
