@@ -14,11 +14,15 @@ class NetworkLayerConfiguration(private val httpconfig: HTTPConfiguration) {
             connectTimeout(httpconfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MILLISECONDS)
             addNetworkInterceptor(NetworkInterceptor())
             authenticator(TokenAuthenticator())
-            addInterceptor(HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
-                override fun log(message: String) {
-                    Timber.tag("OkHttp").d(message)
-                }
-            }))
+            if (httpconfig.getNetworkBuilder().shouldUseInterceptor) {
+                val interceptor = HttpLoggingInterceptor(object : HttpLoggingInterceptor.Logger {
+                    override fun log(message: String) {
+                        Timber.tag("OkHttp").d(message)
+                    }
+                })
+                interceptor.level = HttpLoggingInterceptor.Level.BODY
+                addInterceptor(interceptor)
+            }
         }.build()
         httpconfig.buildOkHttpClient(okhttpClient)
     }
