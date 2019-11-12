@@ -1,4 +1,4 @@
-# BaseNetworkModule [ ![Download](https://api.bintray.com/packages/bodhidipta-dev/networklayer/com.bodhi.network.networklayer/images/download.svg) ](https://bintray.com/bodhidipta-dev/networklayer/com.bodhi.network.networklayer/_latestVersion)
+# BaseNetworkModule
 
 Base Network Module returns retrofit object with taking configuration data.
 Just to get everything in one place, for simple implementation.
