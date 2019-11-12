@@ -49,8 +49,4 @@ For Simple use without any config you dont need to send the NetworkBuilder at al
         retrofitClientt->
          retrofitClientt.create(YourInterfaceClass::class.java)
         }
-        
-# Dependency
-Add following dependency on your project
-
-        implementation 'com.bodhi.network.networklayer:networklayer:1.0.2'
+       
