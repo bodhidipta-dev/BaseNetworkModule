@@ -1,11 +1,71 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.DayNight">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="drawerArrowStyle">@style/drawerstyle</item>
+        <item name="editTextStyle">@style/App_EditTextStyle</item>
+    </style>
+
+    <style name="drawerstyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
+
+    <style name="AppTheme.NoActionBar" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <!--        <item name="android:windowTranslucentStatus">true</item>-->
+        <item name="windowNoTitle">true</item>
+
+    </style>
+
+    <style name="AppTheme.SignIn" parent="AppTheme.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="AppTheme.fullScreen" parent="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:colorBackground">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/splash_background</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="App_EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:layout_height">@dimen/_45sdp</item>
+    </style>
+    <style name="textInputTheme" parent="Widget.Design.TextInputLayout">
+        <item name="hintTextAppearance">@style/InputLayoutHintTextAppearance</item>
+        <item name="errorTextAppearance">@style/ErrorText</item>
+        <item name="android:textColor">@color/text_color_white</item>
+        <item name="android:textColorHint">@color/text_color_white</item>
+        <item name="colorControlNormal">@color/text_color_white</item>
+        <item name="colorControlActivated">@color/text_color_yellow</item>
+        <item name="colorControlHighlight">@color/text_color_red</item>
+    </style>
+
+    <style name="ErrorText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_color_red</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+    </style>
+
+    <style name="HintText" parent="TextAppearance.AppCompat">
+        <item name="android:textColor">@color/text_color_heading</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+    </style>
+
+    <style name="InputLayoutHintTextAppearance" parent="TextAppearance.AppCompat">
+        <item name="android:fontFamily">@font/averta_regular</item>
+        <item name="android:textSize">@dimen/text_size_body</item>
+        <item name="android:padding">@dimen/default_layout_padding</item>
+        <item name="android:textColor">@color/text_color_black</item>
     </style>
 
 </resources>

@@ -1,44 +1,46 @@
 ext {
-    retrofit = '2.6.2'
-    http_logging = '4.2.2'
+    retrofit = '2.8.1'
+    http_logging = '4.5.0'
+    versions_room = '2.2.5'
+    secure_preference = '0.1.7'
 }
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+apply plugin: 'kotlin-kapt'
 
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
 
     defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 29
+        minSdkVersion 26
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
     }
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-
 }
 
 dependencies {
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation("com.squareup.okhttp3:okhttp:${http_logging}")
-    debugImplementation 'com.readystatesoftware.chuck:library:1.1.0'
-    releaseImplementation 'com.readystatesoftware.chuck:library-no-op:1.1.0'
+    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version")
+    api "com.squareup.okhttp3:okhttp:${http_logging}"
     api 'com.jakewharton.timber:timber:4.7.1'
-    implementation("com.squareup.okhttp3:logging-interceptor:${http_logging}")
-    implementation("com.squareup.retrofit2:converter-gson:${retrofit}")
-    api("com.squareup.retrofit2:retrofit:${retrofit}")
+    api "com.squareup.retrofit2:converter-gson:${retrofit}"
+    api "com.squareup.retrofit2:retrofit:$retrofit"
+    api "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
+    api "com.squareup.okhttp3:logging-interceptor:${http_logging}"
     api 'io.reactivex.rxjava2:rxjava:2.2.12'
     api 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation "com.squareup.retrofit2:adapter-rxjava2:${retrofit}"
+    api "androidx.room:room-runtime:${versions_room}"
+    kapt "androidx.room:room-compiler:${versions_room}"
+    api "androidx.room:room-rxjava2:${versions_room}"
+    api "com.scottyab:secure-preferences-lib:${secure_preference}"
 }

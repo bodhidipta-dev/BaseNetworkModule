@@ -1,0 +1,33 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="appbar_padding">16dp</dimen>
+    <dimen name="appbar_padding_top">8dp</dimen>
+    <dimen name="activity_horizontal_margin">@dimen/_16sdp</dimen>
+    <dimen name="activity_vertical_margin">@dimen/_16sdp</dimen>
+    <dimen name="nav_header_vertical_spacing">@dimen/_8sdp</dimen>
+    <dimen name="nav_header_height">@dimen/_176sdp</dimen>
+    <dimen name="fab_margin">@dimen/_16sdp</dimen>
+    <dimen name="text_size_body_title">@dimen/_14ssp</dimen>
+    <dimen name="text_size_body_small">@dimen/_10ssp</dimen>
+    <dimen name="action_bar_elevation">@dimen/_8sdp</dimen>
+    <dimen name="text_size_subheader">@dimen/_15ssp</dimen>
+    <dimen name="text_size_superHeader">@dimen/_16ssp</dimen>
+    <dimen name="text_size_header">@dimen/_20ssp</dimen>
+    <dimen name="text_size_very_large">@dimen/_30ssp</dimen>
+    <dimen name="text_size_very_very_large">@dimen/_40ssp</dimen>
+    <dimen name="text_size_body">@dimen/_12ssp</dimen>
+    <dimen name="text_size_body_extra_small">@dimen/_10ssp</dimen>
+    <dimen name="text_size_body_extra_extra_small">@dimen/_8ssp</dimen>
+    <dimen name="card_default_height">@dimen/_180sdp</dimen>
+    <dimen name="default_layout_padding">@dimen/_8sdp</dimen>
+    <dimen name="card_details_height">@dimen/_300sdp</dimen>
+    <dimen name="thumb_size_small">@dimen/_120sdp</dimen>
+    <dimen name="default_edittext_size">@dimen/_40sdp</dimen>
+    <dimen name="default_icon_size">@dimen/_30sdp</dimen>
+    <dimen name="camera_state_idicator">@dimen/_100sdp</dimen>
+    <dimen name="camera_icon">@dimen/_60sdp</dimen>
+    <dimen name="small_button_height">@dimen/_35sdp</dimen>
+    <dimen name="measure_thumb_width">@dimen/_240sdp</dimen>
+    <dimen name="measure_thumb_height">@dimen/_300sdp</dimen>
+    <dimen name="max_text_description_width">@dimen/_120sdp</dimen>
+</resources>

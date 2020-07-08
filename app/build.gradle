@@ -1,16 +1,16 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
+apply plugin: 'kotlin-kapt'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "androidx.navigation.safeargs.kotlin"
 
 android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    compileSdkVersion 30
+    buildToolsVersion "30.0.0"
     defaultConfig {
         applicationId "com.bodhi.network.networklayer"
-        minSdkVersion 22
-        targetSdkVersion 29
+        minSdkVersion 26
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -19,18 +19,77 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "SEC_TOKEN", SEC_TOKEN
+        }
+        debug {
+            buildConfigField "String", "SEC_TOKEN", SEC_TOKEN
+        }
+    }
+    allprojects {
+        afterEvaluate {
+            extensions.findByName('kapt')?.arguments {
+                arg("dagger.formatGeneratedSource", "disabled")
+                arg("dagger.gradle.incremental", "enabled")
+            }
         }
     }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
-    implementation 'androidx.core:core-ktx:1.0.2'
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    /*Android*/
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.core:core-ktx:1.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+    implementation 'androidx.viewpager2:viewpager2:1.0.0'
+
+    /*Navigation*/
+    implementation "androidx.navigation:navigation-ui:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+    implementation "androidx.navigation:navigation-fragment:$navigation"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+    /*test*/
+    implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
+    implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    testImplementation 'junit:junit:4.13'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    /*rx-dagger-eventbus*/
+    implementation "io.reactivex.rxjava2:rxkotlin:${rx_version}"
+    implementation "com.google.dagger:dagger:${dagger_version}"
+    kapt "com.google.dagger:dagger-compiler:${dagger_version}"
+    implementation "com.google.dagger:dagger-android:${dagger_version}"
+    implementation "com.google.dagger:dagger-android-support:${dagger_version}"
+    kapt "com.google.dagger:dagger-android-processor:${dagger_version}"
+    implementation 'org.greenrobot:eventbus:3.2.0'
+
+    /*network manager*/
     implementation project(path: ':networklayer')
+    /*glide*/
+    implementation "com.github.bumptech.glide:glide:${glide_version}"
+    kapt "com.github.bumptech.glide:compiler:${glide_compiler}"
+    implementation 'jp.wasabeef:glide-transformations:4.1.0'
+    implementation "com.github.bumptech.glide:okhttp3-integration:${glide_interceptor}"
+
+    /*gson*/
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    /*indicator-lottie*/
+    implementation 'me.relex:circleindicator:2.1.4'
+    implementation "com.airbnb.android:lottie:$lottieVersion"
+    /*co-routine*/
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.2'
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    /*permission*/
+    implementation 'com.karumi:dexter:6.1.0'
+    /*ui precision*/
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+    /*image compressor*/
+    implementation 'id.zelory:compressor:3.0.0'
 }

@@ -2,7 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/BaseNetworkModule-ExampleNetworkLibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/BaseNetworkModule-ExampleNetworkLibrary.iml" group="ExampleNetworkLibrary" />
       <module fileurl="file://$PROJECT_DIR$/ExampleNetworkLibrary.iml" filepath="$PROJECT_DIR$/ExampleNetworkLibrary.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ExampleNetworkLibrary-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ExampleNetworkLibrary-app.iml" group="ExampleNetworkLibrary/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/networklayer/ExampleNetworkLibrary-networklayer.iml" filepath="$PROJECT_DIR$/.idea/modules/networklayer/ExampleNetworkLibrary-networklayer.iml" group="ExampleNetworkLibrary/networklayer" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/networklayer/networklayer.iml" filepath="$PROJECT_DIR$/networklayer/networklayer.iml" />
     </modules>
