@@ -25,7 +25,7 @@ object ActivityModule {
     fun provideRetrofitClient(application: Application): ServiceCall {
         return NetworkManager(
             application = application,
-            baseurl = "https://techdarz.in/darzi/Apis/",
+            baseurl = "https://someapiendpoint/Apis/",
             networkBuilder = NetworkBuilder(isMock = true)
         ).retrofitclient
     }
