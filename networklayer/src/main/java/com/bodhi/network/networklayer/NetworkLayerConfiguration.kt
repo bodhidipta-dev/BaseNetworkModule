@@ -28,8 +28,7 @@ class NetworkLayerConfiguration(context: Context, httpConfig: HTTPConfiguration)
                             context,
                             "mock/"+chain.request().url.encodedPathSegments.last()+".json"
                         )
-                        chain.proceed(chain.request())
-                            .newBuilder()
+                         Response.Builder()
                             .code(200)
                             .protocol(Protocol.HTTP_2)
                             .message(
@@ -37,6 +36,7 @@ class NetworkLayerConfiguration(context: Context, httpConfig: HTTPConfiguration)
                                     ?:
                                     " **************** !!!!!! No mock response found !!!! *************"
                             )
+                            .request(chain.request())
                             .body(returnString?.toResponseBody("application/json".toMediaType()))
                             .addHeader("content-type", "application/json")
                             .build()
