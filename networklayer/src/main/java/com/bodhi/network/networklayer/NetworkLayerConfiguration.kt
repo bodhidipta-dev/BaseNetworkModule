@@ -21,22 +21,27 @@ class NetworkLayerConfiguration(context: Context, httpConfig: HTTPConfiguration)
             connectTimeout(httpConfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MINUTES)
             writeTimeout(httpConfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MINUTES)
             readTimeout(httpConfig.getNetworkBuilder().timeoutInMillis, TimeUnit.MINUTES)
-            addNetworkInterceptor(object : Interceptor {
+            addInterceptor(object : Interceptor {
                 override fun intercept(chain: Interceptor.Chain): Response {
                     return if (httpConfig.getNetworkBuilder().isMock) {
+                        val userCase = if (httpConfig.getNetworkBuilder().mockKye.isEmpty())
+                            "" else {
+                           chain.request().headers[httpConfig.getNetworkBuilder().mockKye]?.let {
+                               "$it/"
+                           } ?:""
+                        }
                         val returnString = loadJSONFromAsset(
                             context,
-                            "mock/"+chain.request().url.encodedPathSegments.last()+".json"
+                            "mock/$userCase" + chain.request().url.encodedPathSegments.last() + ".json"
                         )
-                        chain.proceed(chain.request())
-                            .newBuilder()
+                        Response.Builder()
                             .code(200)
                             .protocol(Protocol.HTTP_2)
                             .message(
                                 returnString
-                                    ?:
-                                    " **************** !!!!!! No mock response found !!!! *************"
+                                    ?: " **************** !!!!!! No mock response found !!!! *************"
                             )
+                            .request(chain.request())
                             .body(returnString?.toResponseBody("application/json".toMediaType()))
                             .addHeader("content-type", "application/json")
                             .build()
@@ -107,6 +112,7 @@ class NetworkLayerConfiguration(context: Context, httpConfig: HTTPConfiguration)
 
 data class NetworkBuilder(
     val isMock: Boolean = false,
+    val mockKye: String = "",
     val shouldUseInterceptor: Boolean = true,
     val interceptor: (response: Response) -> Response = { it },
     val retryPolicy: Boolean = true,

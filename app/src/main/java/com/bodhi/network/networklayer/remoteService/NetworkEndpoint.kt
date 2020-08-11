@@ -1,12 +1,19 @@
 package com.bodhi.network.networklayer.remoteService
 
+import com.bodhi.network.networklayer.model.orderDetailsResponse.OrderDetailsResponse
 import com.bodhi.network.networklayer.ui.auth.model.AuthRequestModel
+import com.bodhi.network.networklayer.ui.auth.model.model.AuthResponse
 import io.reactivex.Observable
+import kotlinx.coroutines.Deferred
 import okhttp3.ResponseBody
 import retrofit2.http.Body
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface NetworkEndpoint {
     @POST("getAuthenticate")
-    fun authenticateRestaurant(@Body credential: AuthRequestModel?): Observable<ResponseBody>
+    fun authenticateAsync(@Body credential: AuthRequestModel?): Deferred<AuthResponse>
+    @POST("getPendingOrder")
+    fun getPendingOrderAsync(@Header("Authorisation") token: String): Deferred<OrderDetailsResponse>
+
 }

@@ -7,12 +7,7 @@
   "isEnvironmentDown": false,
   "environmentAccessLevel": "UAT/IT/PROD?",
   "response": {
-    "accessToken": "tokenAfterAuthorisation",
-    "grantedAccess": true,
-    "accessLevel": {
-      "accessExpiry": "timestamp_for_15_days_downtime_of_application",
-      "shouldPersistAccess": true,
-      "level": "rstaurant_name"
-    }
+    "accessToken": "mockauthtoken2",
+    "grantedAccess": true
   }
 }

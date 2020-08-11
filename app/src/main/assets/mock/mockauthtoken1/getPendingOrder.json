@@ -1,0 +1,157 @@
+{
+  "status": 200,
+  "error": {
+    "code": -1,
+    "message": null
+  },
+  "isEnvironmentDown": false,
+  "environmentAccessLevel": "UAT/IT/PROD?",
+  "newPendingOrder": true,
+  "currentPage": 1,
+  "nextPage": null,
+  "totalItems": 50,
+  "perPage": 50,
+  "orderList": [
+    {
+      "orderId": "werw022",
+      "orderItems": [
+        {
+          "id": "12xdf",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Fish-Fry",
+          "quantity": 1,
+          "metric": "Medium",
+          "billingInfo": {
+            "price": "600",
+            "factor_price": "600",
+            "discount": "2%",
+            "discountAmount": "60",
+            "displayAmount": "540"
+          }
+        },
+        {
+          "id": "12xdfe",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Sweet & Spicy Corn",
+          "quantity": 1,
+          "metric": "Small",
+          "billingInfo": {
+            "price": "100",
+            "factor_price": "100",
+            "discount": "0%",
+            "discountAmount": "0",
+            "displayAmount": "108"
+          }
+        }
+      ],
+      "totalBillAmount": "2890",
+      "customerDetails": {
+        "customerId": "dfdfdf",
+        "customerName": "Bruce wayne",
+        "primaryContact": "789456369",
+        "secondaryContact": "741258987",
+        "email": "imbatman@wane.com",
+        "address": "Bat cave, Gotham city, Gotham - 998800"
+      },
+      "orderDate": "27/6/20",
+      "orderTime": "6:20 PM",
+      "paymentID": "xxxx0000112"
+    },
+    {
+      "orderId": "werw023",
+      "orderItems": [
+        {
+          "id": "12xdf",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Fish-Fry",
+          "quantity": 1,
+          "metric": "Medium",
+          "billingInfo": {
+            "price": "600",
+            "factor_price": "600",
+            "discount": "2%",
+            "discountAmount": "60",
+            "displayAmount": "540"
+          }
+        },
+        {
+          "id": "12xdfe",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Sweet & Spicy Corn",
+          "quantity": 1,
+          "metric": "Small",
+          "billingInfo": {
+            "price": "100",
+            "factor_price": "100",
+            "discount": "0%",
+            "discountAmount": "0",
+            "displayAmount": "108"
+          }
+        }
+      ],
+      "totalBillAmount": "2890",
+      "customerDetails": {
+        "customerId": "dfdfdf",
+        "customerName": "Bruce wayne",
+        "primaryContact": "789456369",
+        "secondaryContact": "741258987",
+        "email": "imbatman@wane.com",
+        "address": "Bat cave, Gotham city, Gotham - 998800"
+      },
+      "orderDate": "27/6/20",
+      "orderTime": "6:20 PM",
+      "paymentID": "xxxx0000112"
+    },
+    {
+      "orderId": "werw012",
+      "orderItems": [
+        {
+          "id": "12xdf",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Fish-Fry",
+          "quantity": 1,
+          "metric": "Medium",
+          "billingInfo": {
+            "price": "600",
+            "factor_price": "600",
+            "discount": "2%",
+            "discountAmount": "60",
+            "displayAmount": "540"
+          }
+        },
+        {
+          "id": "12xdfe",
+          "itemCategory": "Snacks",
+          "itemCategoryID": "7788",
+          "ItemName": "Sweet & Spicy Corn",
+          "quantity": 1,
+          "metric": "Small",
+          "billingInfo": {
+            "price": "100",
+            "factor_price": "100",
+            "discount": "0%",
+            "discountAmount": "0",
+            "displayAmount": "108"
+          }
+        }
+      ],
+      "totalBillAmount": "2890",
+      "customerDetails": {
+        "customerId": "dfdfdf",
+        "customerName": "Bruce wayne",
+        "primaryContact": "789456369",
+        "secondaryContact": "741258987",
+        "email": "imbatman@wane.com",
+        "address": "Bat cave, Gotham city, Gotham - 998800"
+      },
+      "orderDate": "27/6/20",
+      "orderTime": "6:20 PM",
+      "paymentID": "xxxx0000112"
+    }
+  ]
+}

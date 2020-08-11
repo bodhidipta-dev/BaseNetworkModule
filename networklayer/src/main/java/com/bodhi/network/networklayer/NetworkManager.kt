@@ -3,12 +3,13 @@ package com.bodhi.network.networklayer
 import android.app.Application
 import com.bodhi.network.networklayer.local.LocalDataBase
 import com.bodhi.network.networklayer.local.PersistenceDao
+import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.securepreferences.SecurePreferences
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import timber.log.Timber
 
@@ -32,7 +33,7 @@ class NetworkManager(
                     client(okHttpClient)
                     baseUrl(baseurl)
                     addConverterFactory(GsonConverterFactory.create())
-                    addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+                    addCallAdapterFactory(CoroutineCallAdapterFactory())
                 }.build()
             retrofitclient = ServiceCallImpl(
                 retrofit,
@@ -48,14 +49,11 @@ class NetworkManager(
     }
 
     init {
-        NetworkLayerConfiguration(application,configuration)
-        localDataBase?.clearResponse()?.subscribeOn(Schedulers.io())
-            ?.observeOn(AndroidSchedulers.mainThread())?.doOnComplete {
-                Timber.i("Local db cleared")
-            }?.doOnError {
-                Timber.i("Error while clearing db..")
-            }
-            ?.subscribe()
+        NetworkLayerConfiguration(application, configuration)
+        CoroutineScope(Dispatchers.IO).launch {
+            localDataBase?.clearResponse()
+            Timber.i("Executing on the context: ->${this.coroutineContext}")
+        }
     }
 
 }

@@ -9,9 +9,8 @@ import androidx.room.RoomDatabase
  * Created for com.bodhi.network.networklayer on 13-11-2019
  * Project ExampleNetworkLibrary
  */
-@Database(entities = [NetworkCallCache::class], version = 1)
+@Database(entities = [NetworkCallCache::class,NetworkSyncData::class], version = 1)
 abstract class LocalDataBase : RoomDatabase() {
-
 
     abstract fun getLocalPreferenceDAO(): PersistenceDao
 

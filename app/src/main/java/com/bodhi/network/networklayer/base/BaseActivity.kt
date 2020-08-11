@@ -2,6 +2,7 @@ package com.bodhi.network.networklayer.base
 
 import android.os.Bundle
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.bodhi.network.networklayer.preference.PreferenceManager
 import com.bodhi.network.networklayer.ui.dialog.BaseProgressDialog
 import dagger.android.support.DaggerAppCompatActivity
@@ -11,7 +12,7 @@ const val SCREENDATA = "IntentScreenData"
 
 abstract class BaseActivity<T : ViewModel> : DaggerAppCompatActivity() {
     @Inject
-    lateinit var viewModelFactory: BaseViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
 
     @Inject
     lateinit var preferenceManager: PreferenceManager

@@ -1,6 +1,7 @@
 package com.bodhi.network.networklayer.base
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.bodhi.network.networklayer.preference.PreferenceManager
 import com.bodhi.network.networklayer.ui.dialog.BaseProgressDialog
 import dagger.android.support.DaggerFragment
@@ -11,7 +12,7 @@ internal const val PARCELABLE_DATA = "BundleData"
 
 open class BaseFragment<T : ViewModel> : DaggerFragment() {
     @Inject
-    lateinit var viewModelFactory: BaseViewModelFactory
+    lateinit var viewModelFactory: ViewModelProvider.Factory
     @Inject
     lateinit var preferenceManager: PreferenceManager
     lateinit var viewmodel: T

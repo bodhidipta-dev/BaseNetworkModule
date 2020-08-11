@@ -17,4 +17,7 @@ class PreferenceManager @Inject constructor(application: Application) {
     fun getSessionId(): String? =
         securePrefs.getString(KepParams.SESSION.value, "")
 
+    fun putSessionID(session: String) {
+        securePrefs.edit().putString(KepParams.SESSION.value, session).apply()
+    }
 }
