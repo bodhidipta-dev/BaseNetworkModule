@@ -3,10 +3,12 @@
 Base Network Module returns retrofit object with taking configuration data.
 Just to get everything in one place, for simple implementation.
       
-      RetrofitClient(
-            baseurl = "your base url goes here",
+      NetworkManager(
+            application = application,
+            baseurl = "https://someapi.endpont/Apis/",
             networkBuilder = NetworkBuilder(
-                 shouldUseInterceptor = true,
+                isMock = true, // default false
+                shouldUseInterceptor = true,
                 interceptor = {
                     // do your stuff and return your custom Response
                     it // replace with your response
@@ -43,10 +45,8 @@ Just to get everything in one place, for simple implementation.
 Thats all, you are set.
 For Simple use without any config you dont need to send the NetworkBuilder at all
 
-       RetrofitClient(
-            baseurl = "your Url"
-        ){
-        retrofitClientt->
-         retrofitClientt.create(YourInterfaceClass::class.java)
-        }
+      NetworkManager(
+            application = application,
+            baseurl = "https://someapi.endpont/Apis/"
+        )
        
