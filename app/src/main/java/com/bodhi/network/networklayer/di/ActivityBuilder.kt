@@ -37,7 +37,27 @@ abstract class ActivityBuilder {
                 baseurl = "https://api.somepi.com/",
                 networkBuilder = NetworkBuilder(
                     isMock = true,
-                    mockKye = "Authorisation"
+                    mockKye = "Authorisation",
+                    authenticator = {
+                        /* Check request here before call request
+                        * */
+                        /*if(it.request.headers["expiredTime"]?.isExpired() == true)
+                            //Do get new access token with refresh
+                            //token or place another api call*/
+                        it.request.newBuilder().build()
+                    },
+                    cachePolicy = true,
+                    shouldUseInterceptor = true, // To use for BODY HttpLoggingInterceptor
+                    shouldUseChuckInterceptor = true, // To use Chuck Interceptor
+                    interceptor = {
+                        /*do your stuff*/
+                        it // Change or modify your response before proceed
+                    },
+                    requestHeaders = mapOf(), // Place your headers added
+                    // explicitly without placing every service call
+                    // like example mapof("deviceID" to "xxxx", "geoLocation" to "latLong", "blah .." to "blah blah ..")
+                    retryPolicy = true, // When it should retry in case of failure
+                    timeoutInMillis = 10000L // Timeout for service call
                 )//header key
             ).retrofitclient
         }
