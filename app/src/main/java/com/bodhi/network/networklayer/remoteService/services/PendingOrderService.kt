@@ -13,7 +13,7 @@ class PendingOrderService<T>(
     val map: Map<*, *>?
 ) : ProxyTask<T>() {
 
-    override fun serviceCallType(): ServiceCallType = ServiceCallType.NETWORK
+    override fun serviceCallType(): ServiceCallType = ServiceCallType.PERSISTENCE
     override fun conversionType(): Type = OrderDetailsResponse::class.java
     override fun getServiceCallAsync(): Deferred<T> {
         val data = (map as Map<String, String>)[PROXY_DATA]

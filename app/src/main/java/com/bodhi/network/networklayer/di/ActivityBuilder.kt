@@ -3,14 +3,12 @@ package com.bodhi.network.networklayer.di
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.bodhi.network.networklayer.NetworkBuilder
 import com.bodhi.network.networklayer.NetworkManager
 import com.bodhi.network.networklayer.RemoteCall
 import com.bodhi.network.networklayer.ServiceCall
-import com.bodhi.network.networklayer.preference.PreferenceManager
+import com.bodhi.network.networklayer.config.NetworkBuilder
 import com.bodhi.network.networklayer.remoteService.NetworkEndpoint
 import com.bodhi.network.networklayer.remoteService.networkCall.NetworkImpl
-import com.bodhi.network.networklayer.remoteService.services.PendingServicesScope
 import com.bodhi.network.networklayer.ui.auth.AuthenticationActivity
 import com.bodhi.network.networklayer.ui.auth.AuthenticationViewModel
 import com.bodhi.network.networklayer.ui.dialog.BaseProgressDialog

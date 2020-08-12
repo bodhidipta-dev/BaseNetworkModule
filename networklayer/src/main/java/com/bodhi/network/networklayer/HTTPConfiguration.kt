@@ -1,5 +1,6 @@
 package com.bodhi.network.networklayer
 
+import com.bodhi.network.networklayer.config.NetworkBuilder
 import okhttp3.OkHttpClient
 
 /**

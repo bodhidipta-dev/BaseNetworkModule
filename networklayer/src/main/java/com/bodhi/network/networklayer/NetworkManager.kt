@@ -1,6 +1,7 @@
 package com.bodhi.network.networklayer
 
 import android.app.Application
+import com.bodhi.network.networklayer.config.NetworkBuilder
 import com.bodhi.network.networklayer.local.LocalDataBase
 import com.bodhi.network.networklayer.local.PersistenceDao
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
