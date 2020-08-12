@@ -5,10 +5,12 @@ Just to get everything in one place, for simple implementation.
       
       NetworkManager(
             application = application,
+            mockKye = "Authorisation", // Use your mock header key might be accesstoke or username etc.
             baseurl = "https://someapi.endpont/Apis/",
             networkBuilder = NetworkBuilder(
                 isMock = true, // default false
-                shouldUseInterceptor = true,
+                shouldUseInterceptor = true,  // To use for BODY HttpLoggingInterceptor
+                shouldUseChuckInterceptor = true, // To use Chuck Interceptor
                 interceptor = {
                     // do your stuff and return your custom Response
                     it // replace with your response
@@ -43,10 +45,58 @@ Just to get everything in one place, for simple implementation.
                     )
                     
 Thats all, you are set.
+
 For Simple use without any config you dont need to send the NetworkBuilder at all
+=
 
       NetworkManager(
             application = application,
             baseurl = "https://someapi.endpont/Apis/"
         )
        
+       
+For use Mock structure use Asset folder on the project as such
+=
+
+        --assets--/
+        --mock-/
+             -- mockekey--/
+                        /--> serviceEndpointName.json
+            authorisationServiceEndPointName.json
+
+For call Service Use 
+=
+ 
+ 
+            remoteCall.getProxyTask<SomeDataType>(
+                mapOf(PROXY_DATA to RequestDataClass),
+                "IdentifierName"
+            ).executeFlow(corroutineContextwithLifecycle)
+                .catch {
+                    // Do error stuff
+                }
+                .collectLatest {
+                   // Collect latest flow
+                } 
+                // Or change it to live data
+                
+Do implement your class implementation of remoteCall
+=  
+    class NetworkImplementation(
+    private val serviceCall: ServiceCall, // NetworkManager().retrofitclient 
+    private val network: NetworkEndpoint // Your endpoint where all retrofit service call resides should be passed                              
+    NetworkManager().retrofitclient.serviceEndpoints(NetworkEndpoint::class.java)) : RemoteCall {
+            /* Mapping for all service call */
+            override fun <T : Any> getProxyTask(params: Map<*, *>?, identifier: String): Task<T> {
+            return when (identifier) {
+            "identifeir1" -> IdentifierService1<T>(network, params) // IdentifierService1 extends  ProxyTask<T>() 
+            "identifier2" -> IdentifierService2<T>(network, params)
+            else -> throw ClassNotFoundException("No Such service found")
+            }.provideTaskAsync(identifier = identifier, serviceCall = serviceCall)
+            }
+            /*return database for save information */
+            override fun getPersistenceDAO(): PersistenceDao? {
+            return serviceCall.getPersistenceDao()
+            } 
+            }
+
