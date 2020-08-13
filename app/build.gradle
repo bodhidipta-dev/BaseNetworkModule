@@ -20,9 +20,11 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "SEC_TOKEN", SEC_TOKEN
+            testCoverageEnabled false
         }
         debug {
             buildConfigField "String", "SEC_TOKEN", SEC_TOKEN
+            testCoverageEnabled true
         }
     }
     allprojects {
@@ -55,7 +57,14 @@ dependencies {
     /*test*/
     implementation 'com.google.firebase:firebase-crashlytics:17.1.1'
     implementation 'com.google.firebase:firebase-analytics:17.4.4'
+    implementation project(path: ':networklayer')
+    testImplementation 'org.powermock:powermock-classloading-xstream:2.0.7'
+    testImplementation 'org.powermock:powermock-module-junit4:2.0.7'
+    testImplementation 'org.mockito:mockito-core:3.4.6'
+    testImplementation 'org.robolectric:robolectric:4.3.1'
+    testImplementation 'org.powermock:powermock-api-mockito2:2.0.7'
     testImplementation 'junit:junit:4.13'
+    testImplementation 'org.powermock:powermock-module-junit4-rule:2.0.7'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     /*rx-dagger-eventbus*/
@@ -68,7 +77,7 @@ dependencies {
     implementation 'org.greenrobot:eventbus:3.2.0'
 
     /*network manager*/
-    implementation project(path: ':networklayer')
+//    implementation project(path: ':networklayer')
     /*glide*/
     implementation "com.github.bumptech.glide:glide:${glide_version}"
     kapt "com.github.bumptech.glide:compiler:${glide_compiler}"
@@ -93,3 +102,5 @@ dependencies {
     /*image compressor*/
     implementation 'id.zelory:compressor:3.0.0'
 }
+apply from: "$project.rootDir/jacoco.gradle"
+
