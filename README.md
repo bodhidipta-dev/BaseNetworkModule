@@ -5,7 +5,7 @@ Just to get everything in one place, for simple implementation.
       
       NetworkManager(
             application = application,
-            mockKye = "Authorisation", // Use your mock header key might be accesstoke or username etc.
+            mockKye = "Authorisation", // Use your mock header key might be accesstoken or username etc.
             baseurl = "https://someapi.endpont/Apis/",
             networkBuilder = NetworkBuilder(
                 isMock = true, // default false
@@ -100,3 +100,15 @@ Do implement your class implementation of remoteCall
             } 
             }
 
+References
+=  
+    https://square.github.io/okhttp/
+    https://square.github.io/retrofit/
+    https://github.com/JakeWharton/timber
+    https://github.com/scottyab/secure-preferences
+    https://github.com/jgilfelt/chuck
+    https://github.com/greenrobot/EventBus
+    https://bumptech.github.io/glide/
+    https://github.com/Karumi/Dexter
+    https://github.com/intuit/sdp
+    https://github.com/intuit/ssp
