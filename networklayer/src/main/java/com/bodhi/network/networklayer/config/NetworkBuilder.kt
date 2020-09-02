@@ -29,3 +29,4 @@ data class NetworkBuilder(
     /* Override request call for authorisation call to take necessary steps */
     val authenticator: (response: Response) -> Request? = { it.request.newBuilder().build() }
 )
+

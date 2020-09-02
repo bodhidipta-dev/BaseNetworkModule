@@ -8,7 +8,7 @@ import com.bodhi.network.networklayer.RemoteCall
 import com.bodhi.network.networklayer.ServiceCall
 import com.bodhi.network.networklayer.config.NetworkBuilder
 import com.bodhi.network.networklayer.remoteService.NetworkEndpoint
-import com.bodhi.network.networklayer.remoteService.networkCall.NetworkImpl
+import com.bodhi.network.networklayer.remoteService.networkCall.NetworkServiceResolver
 import com.bodhi.network.networklayer.ui.auth.AuthenticationActivity
 import com.bodhi.network.networklayer.ui.auth.AuthenticationViewModel
 import com.bodhi.network.networklayer.ui.dialog.BaseProgressDialog
@@ -73,8 +73,8 @@ abstract class ActivityBuilder {
         fun providesRemoteCall(
             serviceCall: ServiceCall,
             network: NetworkEndpoint
-        ): NetworkImpl {
-            return NetworkImpl(serviceCall, network)
+        ): NetworkServiceResolver {
+            return NetworkServiceResolver(serviceCall, network)
         }
 
         @Provides
@@ -103,6 +103,6 @@ abstract class ActivityBuilder {
     abstract fun provideAuthenticationViewModel(viewModel: AuthenticationViewModel): ViewModel
 
     @Binds
-    internal abstract fun postRemoteCall(networkImpl: NetworkImpl): RemoteCall
+    internal abstract fun postRemoteCall(networkServiceResolver: NetworkServiceResolver): RemoteCall
 
 }
